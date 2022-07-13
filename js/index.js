@@ -304,7 +304,6 @@
   });
 })();
 
-
 // 播放量折线图
 (function () {
   var myChart = echarts.init(document.querySelector(".line2 .chart"));
@@ -554,6 +553,125 @@
           99,
           50,
           20
+        ]
+      }
+    ]
+  };
+  myChart.setOption(option);
+  window.addEventListener("resize", function () {
+    myChart.resize();
+  });
+})();
+
+// 年龄分布饼图
+(function () {
+  var myChart = echarts.init(document.querySelector(".pie .chart"));
+  var option = {
+    color: ["#065aab", "#066eab", "#0682ab", "#0696ab", "#06a0ab"],
+    tooltip: {
+      trigger: "item",
+      formatter: "{a} <br/>{b}: {c} ({d}%)"
+    },
+
+    legend: {
+      bottom: "0%",
+      // 修改小图标的大小
+      itemWidth: 10,
+      itemHeight: 10,
+      // 修改图例组件的文字为 12px
+      textStyle: {
+        color: "rgba(255,255,255,.5)",
+        fontSize: "12"
+      }
+    },
+    series: [
+      {
+        name: "年龄分布",
+        type: "pie",
+        // 这个radius可以修改饼形图的大小
+        // radius 第一个值是内圆的半径 第二个值是外圆的半径
+        radius: ["40%", "60%"],
+        center: ["50%", "45%"],
+        avoidLabelOverlap: false,
+        // 图形上的文字
+        label: {
+          show: false,
+          position: "center"
+        },
+        // 链接文字和图形的线是否显示
+        labelLine: {
+          show: false
+        },
+        data: [
+          { value: 1, name: "0岁以下" },
+          { value: 4, name: "20-29岁" },
+          { value: 2, name: "30-39岁" },
+          { value: 2, name: "40-49岁" },
+          { value: 1, name: "50岁以上" }
+        ]
+      }
+    ]
+  };
+  myChart.setOption(option);
+  window.addEventListener("resize", function () {
+    myChart.resize();
+  });
+})();
+
+//地区分布饼图
+(function () {
+  var myChart = echarts.init(document.querySelector(".pie2 .chart"));
+  var option = {
+    color: [
+      "#006cff",
+      "#60cda0",
+      "#ed8884",
+      "#ff9f7f",
+      "#0096ff",
+      "#9fe6b8",
+      "#32c5e9",
+      "#1d9dff"
+    ],
+    tooltip: {
+      trigger: "item",
+      formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+      bottom: "0%",
+      itemWidth: 8,
+      itemHeight: 8,
+      textStyle: {
+        color: "rgba(255,255,255,.5)",
+        fontSize: "12"
+      }
+    },
+    series: [
+      {
+        name: "地区分布",
+        type: "pie",
+        radius: ["10%", "65%"],
+        center: ["50%", "45%"],
+        roseType: "radius",
+        // 图形的文字标签
+        label: {
+          fontSize: 10
+        },
+        // 链接图形和文字的线条
+        labelLine: {
+          // length 链接图形的线条
+          length: 6,
+          // length2 链接文字的线条
+          length2: 8
+        },
+        data: [
+          { value: 20, name: "云南" },
+          { value: 26, name: "北京" },
+          { value: 24, name: "山东" },
+          { value: 25, name: "河北" },
+          { value: 20, name: "江苏" },
+          { value: 25, name: "浙江" },
+          { value: 30, name: "四川" },
+          { value: 42, name: "湖北" }
         ]
       }
     ]
